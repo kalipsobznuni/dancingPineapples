@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+ <html>
+ 	<head>
+    <link rel="icon" type="image/gif/png" href="pin.png">
+		<title>Dancing Pineapples by KB</title>
+ 	</head>
+ 	<body bgcolor="teal">
+
+    <canvas id="canvas" width="1000";
+  height="500" style:'border= 8px solid black' >
+  </canvas>
+
+ 	<script>
+ 		let canvas = document.getElementById("canvas");
+ 		let context = canvas.getContext("2d");
+ 		const NUM_POINTS = 15;
+ 		const points = [];
+    const pinSize = Math.random()*200
+
+ 		for(let i = 0; i < NUM_POINTS; i++) {
+ 		  points.push({
+ 		    x: Math.random() * canvas.width,
+ 		    y: Math.random() * canvas.height,
+ 		    width: pinSize,
+ 		    height:pinSize*1.5,
+ 		    xDelta: 1,
+ 		    yDelta: 1,
+
+ 		  });
+ 		}
+
+ 		const draw = function() {
+ 			context.clearRect(0, 0, canvas.width, canvas.height);
+ 			points.forEach( function(thePoint) {
+        const img = new Image;
+       img.onload = function(){
+         context.drawImage(img, thePoint.x, thePoint.y, thePoint.width, thePoint.height);
+       };
+       img.src = 'cutepineapple.png';
+
+        thePoint.x += thePoint.xDelta;
+ 				thePoint.y += thePoint.yDelta;
+
+       	if(thePoint.x+thePoint.width >= 1000 || thePoint.x <= 0) {
+ 			 		thePoint.xDelta *= -1;
+  		}
+ 				if(thePoint.y+thePoint.height >= 500 || thePoint.y <= 0) {
+ 			 		thePoint.yDelta *= -1;
+ 				}
+ 			});
+ 		};
+
+ 		let animate = function() {
+ 		  draw();
+ 		  setTimeout(animate, 3);
+ 		};
+
+ 		animate();
+ 	</script>
+
+ 	</body>
+ </html>
