@@ -4,7 +4,7 @@
     <link rel="icon" type="image/gif/png" href="pin.png">
 		<title>Dancing Pineapples by KB</title>
  	</head>
- 	<body bgcolor="teal">
+ 	<body bgcolor="rgba(101, 247, 146, 0.75)">
 
     <canvas id="canvas" width="1000";
   height="500" style:'border= 8px solid black' >
@@ -15,14 +15,16 @@
  		let context = canvas.getContext("2d");
  		const NUM_POINTS = 15;
  		const points = [];
-    const pinSize = Math.random()*200
+
 
  		for(let i = 0; i < NUM_POINTS; i++) {
- 		  points.push({
+      const pinSize = Math.random()*200
+      points.push({
  		    x: Math.random() * canvas.width,
  		    y: Math.random() * canvas.height,
+
  		    width: pinSize,
- 		    height:pinSize*1.5,
+ 		    height:pinSize*1.2,
  		    xDelta: 1,
  		    yDelta: 1,
 
